@@ -1,0 +1,37 @@
+@mixin sans-serif {
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+@mixin serif {
+  font-family: serif;
+}
+
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  @include sans-serif;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

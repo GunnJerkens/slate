@@ -1,0 +1,21 @@
+$sidebar: 350px;
+
+body {
+  overflow: hidden;
+  width: $width;
+  height: $height;
+}
+
+#sidebar {
+  position: absolute;
+  left: 0;
+  width: $sidebar;
+  height: $height;
+}
+
+#content {
+  position: absolute;
+  left: $sidebar;
+  width: $width - $sidebar;
+  height: $height;
+}
