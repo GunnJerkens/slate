@@ -11,7 +11,7 @@ module.exports = (grunt) ->
         files:
           'public/js/slate.min.js': [
             'public/js/src/slate.js'
-            'public/js/src/*.js'
+            'public/js/src/modules/*.js'
           ]
           'public/js/vendor.min.js': [
             'public/js/src/vendor/jquery.js'

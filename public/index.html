@@ -32,15 +32,26 @@
         window.slate = new Slate(views);
         slate.mainView.render('home');
       });
+
+      $('#disclaimer').on('click', function() {
+        $('.disclaimer-overlay').remove();
+        $('.disclaimer-window').remove();
+        $('#content').append('<div class="disclaimer-overlay"></div>');
+        $('#content').append('<div class="disclaimer-window"><h2>Disclaimer</h2><p></p><div>');
+      });
+
+      $('#content').on('click', '.disclaimer-window .close, .disclaimer-overlay', function() {
+        $('.disclaimer-overlay').remove();
+        $('.disclaimer-window').remove();
+      });
     </script>
 
-
-      <script type='text/javascript' id="__bs_script__">
+    <script type='text/javascript' id="__bs_script__">
       if(window.location.hostname.indexOf('dev') > -1) {
         //<![CDATA[
           document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.8.2.js'><\/script>".replace("HOST", location.hostname));
         //]]>
       }
-      </script>
+    </script>
   </body>
 </html>
