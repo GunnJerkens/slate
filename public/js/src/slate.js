@@ -18,9 +18,9 @@
 
     $(document).on('click', '.change-view', slate.changeViewListener);
 
-    _.each(slate.views, function(v, i){
-      var menu_view = new slate.MenuView({ name: v, slug: i });
-      $('#menu-container').append(menu_view.el);
+    _.each(slate.views, function(menuItem) {
+      var menuView = new slate.MenuView(menuItem);
+      $('#menu-container').append(menuView.el);
     });
 
   };
@@ -28,21 +28,32 @@
   Slate.prototype = {
     // Menu views
     MenuView: Bb.View.extend({
-
       tagName: "li",
-      template: Handlebars.compile('<a href="#" class="menu-item change-view {{slug}}" data-view="{{slug}}">{{{name}}}</a>'),
-
-      events: {
-        // "click .change-view" : "changeView"
-      },
+      events: {},
 
       initialize: function(view) {
-        this.view = view;
+        this.view = view || {};
+        // Set a hidden class
+        if(this.view.hidden) this.$el.addClass('hidden');
         this.render();
       },
 
       render: function(){
-        $(this.el).html(this.template(this.view));
+        var markup = '', template;
+
+        markup += '<a href="#" class="menu-item{{#if subMenu}} parent-item{{/if}} change-view {{slug}}" data-view="{{slug}}">{{#if image}}<img src="{{{image}}}">{{else}}{{{name}}}{{/if}}</a>';
+
+        if(this.view.subMenu !== false) {
+          markup += '<ul class="sub-menu {{slug}}">';
+          _.each(this.view.subMenu, function(item) {
+            markup += '<li><a href="#" class="sub-menu-item change-view ' + item.slug + '" data-view="' + item.slug + '" data-view-params="slug=' + item.param + '">' + item.name + '</a></li>';
+          });
+          markup += '</ul>';
+        }
+
+        template = Handlebars.compile(markup);
+        console.log(this.view);
+        $(this.el).html(template(this.view));
         return this;
       },
 
@@ -68,17 +79,7 @@
         self.$el.empty();
 
         templateSource = $.ajax({ url: "partials/" + slug + ".html", async: false }).responseText;
-        // self.template = Handlebars.compile(templateSource);
         $(self.el).html(templateSource);
-
-        // XXX - :19 already delegates this
-        // $(self.el).on("click", ".change-view", function(e){
-        //   e.preventDefault();
-        //   self.render($(e.currentTarget).attr('data-view'));
-        // });
-
-        $('#menu-container li a:not(.'+ slug +')').closest('li').removeClass('active');
-        $('#menu-container li a.'+ slug).closest('li').addClass('active');
 
         $('#content').removeClass();
         $('#content').addClass(slug);

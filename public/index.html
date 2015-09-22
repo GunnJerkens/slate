@@ -27,7 +27,29 @@
 
     <script type="text/javascript">
       jQuery(function($){
-        var views = {'example':"Example 1", 'example-two':"Example Two"};
+        var views = [
+          {
+            "slug"    : "home",
+            "name"    : "Home",
+            "image"   : false,
+            "subMenu" : false,
+            "hidden"  : true
+          },
+          {
+            "slug"    : "example",
+            "name"    : "Example",
+            "image"   : false,
+            "subMenu" : false,
+            "hidden"  : false
+          },
+          {
+            "slug"    : "kittens",
+            "name"    : "Kittens",
+            "image"   : "http://placekitten.com/g/250/25",
+            "subMenu" : false,
+            "hidden"  : false
+          }
+        ];
 
         window.slate = new Slate(views);
         slate.mainView.render('home');
@@ -49,7 +71,7 @@
     <script type='text/javascript' id="__bs_script__">
       if(window.location.hostname.indexOf('dev') > -1) {
         //<![CDATA[
-          document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.8.2.js'><\/script>".replace("HOST", location.hostname));
+          document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.9.4.js'><\/script>".replace("HOST", location.hostname));
         //]]>
       }
     </script>
