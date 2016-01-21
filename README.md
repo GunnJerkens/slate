@@ -1,14 +1,12 @@
-# touchscreen boilerplate
+# slate
+
+Slate is an opinionated boilerplate for touchscreen applications built at Gunn/Jerkens. In its simplicity it is geared towards a 1920x1080 device, though this could be modified to be any size.
 
 ## usage
 
-This is a boilerplate for Backbone.js projects built with touch interfaces in mind, most specifically ones that are 1920x1080.
-
-To get started, install the assets with `npm install`.
-
 ## requirements
 
-- node/npm  
+## libraries
 
 ## license
 
