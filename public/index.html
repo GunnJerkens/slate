@@ -25,6 +25,17 @@
     <script type="text/javascript" src="js/vendor.min.js"></script>
     <script type="text/javascript" src="js/slate.min.js"></script>
 
+    <script id="hb-menu" type="text/x-handlebars-template">
+      <a href="#" class="menu-item{{#if subMenu}} parent-item{{/if}} change-view {{ slug }}" data-view="{{ slug }}">{{#if image}}<img src="{{{ image }}}">{{else}}{{{ name }}}{{/if}}</a>
+      {{#if subMenu}}
+        <ul class="sub-menu {{slug}}">
+          {{#each subMenu}}
+            <li><a href="#" class="sub-menu-item change-view {{ this.slug }}" data-view="{{ this.slug }}" data-view-params="slug={{ this.param }}">{{ this.name }}</a></li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    </script>
+
     <script type="text/javascript">
       jQuery(function($){
         var views = [
@@ -39,7 +50,18 @@
             "slug"    : "example",
             "name"    : "Example",
             "image"   : false,
-            "subMenu" : false,
+            "subMenu" : [
+              {
+                "slug"    : "example",
+                "name"    : "Submenu 1",
+                "param"   : 1
+              },
+              {
+                "slug"  : "example",
+                "name"  : "Submenu 2",
+                "param" : 2
+              },
+            ],
             "hidden"  : false
           },
           {
@@ -71,7 +93,7 @@
     <script type='text/javascript' id="__bs_script__">
       if(window.location.hostname.indexOf('dev') > -1) {
         //<![CDATA[
-          document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.9.4.js'><\/script>".replace("HOST", location.hostname));
+          document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.11.1.js'><\/script>".replace("HOST", location.hostname));
         //]]>
       }
     </script>

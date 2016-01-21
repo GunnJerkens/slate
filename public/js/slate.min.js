@@ -9,7 +9,7 @@
 (function (window,_,Bb,$,Handlebars,undefined) {
   "use strict";
 
-  var Slate = function(views){
+  var Slate = function(views) {
 
     var slate = this;
 
@@ -26,31 +26,30 @@
   };
 
   Slate.prototype = {
-    // Menu views
+
+    /**
+     * Instantiates the menu view on the left column
+     *
+     * @return void
+     */
     MenuView: Bb.View.extend({
       tagName: "li",
       events: {},
 
       initialize: function(view) {
         this.view = view || {};
-        // Set a hidden class
-        if(this.view.hidden) this.$el.addClass('hidden');
+
+        if (this.view.hidden) {
+          this.$el.addClass('hidden');
+        }
+
         this.render();
       },
 
       render: function(){
-        var markup = '', template;
+        var markup, template;
 
-        markup += '<a href="#" class="menu-item{{#if subMenu}} parent-item{{/if}} change-view {{slug}}" data-view="{{slug}}">{{#if image}}<img src="{{{image}}}">{{else}}{{{name}}}{{/if}}</a>';
-
-        if(this.view.subMenu !== false) {
-          markup += '<ul class="sub-menu {{slug}}">';
-          _.each(this.view.subMenu, function(item) {
-            markup += '<li><a href="#" class="sub-menu-item change-view ' + item.slug + '" data-view="' + item.slug + '" data-view-params="slug=' + item.param + '">' + item.name + '</a></li>';
-          });
-          markup += '</ul>';
-        }
-
+        markup   = $('#hb-menu').html();
         template = Handlebars.compile(markup);
 
         $(this.el).html(template(this.view));
@@ -64,7 +63,11 @@
       }
     }),
 
-    // Main content view
+    /**
+     * Extends backbone and renders the main #content window
+     *
+     * @return void
+     */
     MainView: Bb.View.extend({
       el: "#main-container",
 
@@ -87,6 +90,14 @@
       }
     }),
 
+    /**
+     * This handles the swap state of our views, for a
+     * href to use the "change-view" class to activate
+     *
+     * @param e object (event)
+     *
+     * @return void
+     */
     changeViewListener: function(e) {
       var target, view, paramsQuery, viewParams;
 
@@ -111,16 +122,42 @@
           .value();
       }
 
+      slate.applyActiveStates(target, view, viewParams);
       slate.mainView.render(view, viewParams);
     },
 
-    //Utilities
-    convertToSlug: function(text){
+    /**
+     * Use this method to apply active states to your menu classes
+     * via jQuery, passed in are the active target element that was
+     * clicked, which view is being rendered, and any parameters that
+     * are being passed to said view.
+     *
+     * @param target object (jQuery)
+     * @param view string
+     * @param parameters object
+     *
+     * @return void
+     */
+    applyActiveStates: function(target, view, parameters) {
+      return false;
+    },
+
+    /**
+     * Utility method that makes our slugs easier to work with.
+     * They return lowercased, without spaces or white space
+     * (replaced by a '-')
+     *
+     * @param text string
+     *
+     * @return string
+     */
+    convertToSlug: function(text) {
       return text
         .toLowerCase()
         .replace(/ /g,'-')
         .replace(/[^\w\-]+/g,'');
     }
+
   };
 
   window.Slate = Slate;
