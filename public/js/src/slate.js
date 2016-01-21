@@ -1,12 +1,12 @@
 /*
- * Slate.js - a framework for creating touchscreen applications
- * Built using Backbone.js
- * Authors: Christopher Lovejoy (github.com/monking) and Andrew Kostka (github.com/apkostka)
+ * slate - a framework for creating touchscreen applications
  *
+ * Built using Backbone.js for Gunn/Jerkens
  */
+
 /* global window,_,Backbone,jQuery,Handlebars */
 
-(function (window,_,Bb,$,Handlebars,undefined){
+(function (window,_,Bb,$,Handlebars,undefined) {
   "use strict";
 
   var Slate = function(views){
@@ -52,7 +52,7 @@
         }
 
         template = Handlebars.compile(markup);
-        console.log(this.view);
+
         $(this.el).html(template(this.view));
         return this;
       },
@@ -68,8 +68,7 @@
     MainView: Bb.View.extend({
       el: "#main-container",
 
-      initialize: function() {
-      },
+      initialize: function() {},
 
       render: function(slug, params) {
         var self = this, templateSource;
@@ -88,7 +87,7 @@
       }
     }),
 
-    changeViewListener: function(e){
+    changeViewListener: function(e) {
       var target, view, paramsQuery, viewParams;
 
       e.stopPropagation();
@@ -120,8 +119,7 @@
       return text
         .toLowerCase()
         .replace(/ /g,'-')
-        .replace(/[^\w\-]+/g,'')
-        ;
+        .replace(/[^\w\-]+/g,'');
     }
   };
 
