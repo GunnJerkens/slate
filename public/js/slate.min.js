@@ -74,19 +74,23 @@
       initialize: function() {},
 
       render: function(slug, params) {
-        var self = this, templateSource;
+        var _this = this;
 
         slate.viewParams = params;
 
-        self.$el.empty();
+        _this.$el.empty();
 
-        templateSource = $.ajax({ url: "partials/" + slug + ".html", async: false }).responseText;
-        $(self.el).html(templateSource);
+        $.ajax({
+          url: "partials/" + slug + ".html",
+        }).done(function(templateSource) {
+          console.log(templateSource);
 
-        $('#content').removeClass();
-        $('#content').addClass(slug);
+          $(_this.el).html(templateSource);
+          $('#content').removeClass();
+          $('#content').addClass(slug);
+        });
 
-        return this;
+        return _this;
       }
     }),
 
