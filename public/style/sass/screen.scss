@@ -21,8 +21,8 @@ $width: 1920px;
 $height: 1080px;
 
 /* SCSS Modules */
-@import "reset";
 @import "colors";
 @import "typography";
+@import "utility";
 @import "layout";
 @import "views";

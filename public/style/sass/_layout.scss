@@ -11,6 +11,7 @@ body {
   left: 0;
   width: $sidebar;
   height: $height;
+  border-right: 1px solid $black;
 }
 
 #content {
@@ -18,4 +19,21 @@ body {
   left: $sidebar;
   width: $width - $sidebar;
   height: $height;
+}
+
+.logo {
+  margin: 75px auto;
+  text-align: center;
+}
+
+.menu-container {
+  list-style: none;
+
+  li {
+    margin: 5px auto;
+  }
+}
+
+.main-container {
+  padding: 25px;
 }

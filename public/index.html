@@ -1,24 +1,25 @@
 <!doctype html>
 <html>
   <head>
-    <title></title>
+    <title>Slate</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="stylesheet" href="/style/screen.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style/screen.css">
   </head>
   <body>
 
     <div id="sidebar">
-      <div id="logo" class="change-view" data-view="home">
-        <img src="">
+      <div class="logo change-view" data-view="home">
+        <img src="/img/slate.png">
       </div>
       <div id="menu">
-        <ul id="menu-container"></ul>
+        <ul id="menu-container" class="menu-container"></ul>
       </div>
     </div>
     <div id="content">
-      <div id="main-container"></div>
+      <div id="main-container" class="main-container"></div>
     </div>
 
     <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?v=3'></script>
@@ -77,17 +78,6 @@
         slate.mainView.render('home');
       });
 
-      $('#disclaimer').on('click', function() {
-        $('.disclaimer-overlay').remove();
-        $('.disclaimer-window').remove();
-        $('#content').append('<div class="disclaimer-overlay"></div>');
-        $('#content').append('<div class="disclaimer-window"><h2>Disclaimer</h2><p></p><div>');
-      });
-
-      $('#content').on('click', '.disclaimer-window .close, .disclaimer-overlay', function() {
-        $('.disclaimer-overlay').remove();
-        $('.disclaimer-window').remove();
-      });
     </script>
 
     <script type='text/javascript' id="__bs_script__">

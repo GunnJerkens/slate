@@ -1,5 +1,5 @@
 @mixin sans-serif {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 @mixin serif {
@@ -20,18 +20,11 @@ body {
   @include sans-serif;
 }
 
-.hidden {
-  display: none !important;
-  visibility: hidden !important;
+* {
+  font-weight: 400;
+  @include sans-serif;
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+a {
+  text-decoration: none;
 }

@@ -83,8 +83,6 @@
         $.ajax({
           url: "partials/" + slug + ".html",
         }).done(function(templateSource) {
-          console.log(templateSource);
-
           $(_this.el).html(templateSource);
           $('#content').removeClass();
           $('#content').addClass(slug);

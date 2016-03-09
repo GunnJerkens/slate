@@ -1,1 +1,9 @@
-<h1>Example</h1>
+<h1 id="title"></h1>
+
+<script>
+  if (typeof slate.viewParams != "undefined") {
+    $('#title').text('Example Submenu ' + slate.viewParams.slug);
+  } else {
+    $('#title').text('Example Page');
+  }
+</script>

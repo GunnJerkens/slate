@@ -1,2 +1,11 @@
-$black: #000000;
+$black: #111111;
+.black { color: $black; }
+.bg-black { background-color: $black; }
+
 $white: #ffffff;
+.white { color: $white; }
+.bg-white { background-color: $white; }
+
+$slate: #464646;
+.slate { color: $slate; }
+.bg-slate { background-color: $slate; }

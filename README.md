@@ -18,7 +18,7 @@ Out of the box point your webserver (apache/nginx/etc) at the `/public/` directo
 
 ## libraries
 
-All libraries located in `public/js/src/vendor/` are follow their specific licenses.
+All libraries located in `public/js/src/vendor/` follow their specific license.
 
 - [backbone.js](https://github.com/jashkenas/backbone)  
 - [handlebars.js](https://github.com/wycats/handlebars.js)  
