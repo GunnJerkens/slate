@@ -1,4 +1,4 @@
-# slate
+# Slate
 
 Slate is an opinionated boilerplate for touchscreen applications built at Gunn/Jerkens. In its simplicity it is geared towards a 1920x1080 device, though this could be modified to be any size.
 
@@ -49,9 +49,17 @@ var views = [
 
 ### views
 
+Any href that has the class `change-view` with trigger Slate to change the `#content` view.
+
+```
+<a href="#" class="change-view" data-view="example" data-view-params="slug=42">Example 42</a>
+```
+
+To access params passed through slate into the view you can log out the viewParams object. 
+
 ```
 if (typeof slate.viewParams != "undefined") {
-  console.log(slate.viewParams);
+  console.log(slate.viewParams);  // { "slug": "42" }
 }
 ```
 
